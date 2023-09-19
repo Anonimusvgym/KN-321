@@ -1,0 +1,57 @@
+//1 лабораторна робота//
+#include <iostream>
+
+class Kasa {
+private:
+    int number_of_cars;
+    double total_revenue;
+
+public:
+    Kasa() : number_of_cars(0), total_revenue(0.0) {}
+
+    void payingCar() {
+        number_of_cars++;
+        total_revenue += 0.50;
+    }
+
+    void passingCar() {
+        number_of_cars++;
+    }
+
+    void display() const {
+        std::cout << "Кількість машин: " << number_of_cars << std::endl;
+        std::cout << "Сумарна виручка: $" << total_revenue << std::endl;
+    }
+};
+
+int main() {
+    Kasa kasa;
+
+    char choice;
+    do {
+        std::cout << "Натисніть 'P' для оплати або 'N' для неоплати, або 'E' для виходу: ";
+        std::cin >> choice;
+
+        switch (choice) {
+            case 'P':
+                kasa.payingCar();
+                std::cout << "Машина оплатила проїзд." << std::endl;
+                break;
+            case 'N':
+                kasa.passingCar();
+                std::cout << "Машина проїхала без оплати." << std::endl;
+                break;
+            case 'E':
+                break;
+            default:
+                std::cout << "Неправильний вибір, спробуйте ще раз." << std::endl;
+                break;
+        }
+
+        kasa.display();
+    } while (choice != 'E');
+
+    std::cout << "Програма завершила роботу." << std::endl;
+
+    return 0;
+}
